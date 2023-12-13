@@ -22,8 +22,8 @@ export default function ProjectOverview({ project }: { project: Project }) {
           {project.descriptionBrief}
         </div>{" "}
         <div className="flex gap-2 pt-4 max-md:pr-5 flex-wrap">
-          {project.skills.map((skill) => (
-            <SkillTile title={skill} />
+          {project.skills.map((skill, index) => (
+            <SkillTile key={`skill-${index}-${skill}`} title={skill} />
           ))}
         </div>{" "}
       </div>

@@ -28,8 +28,8 @@ export default function Project({ params }: { params: { slug: string } }) {
                   {project.descriptionBrief}
                 </div>
                 <div className="items-stretch flex gap-2 mt-6 pr-20 max-md:max-w-full max-md:flex-wrap max-md:pr-5">
-                  {project.skills.map((skill) => (
-                    <SkillTile title={skill} />
+                  {project.skills.map((skill, index) => (
+                    <SkillTile key={`skill-${skill}-${index}`} title={skill} />
                   ))}
                 </div>
               </div>
@@ -93,7 +93,9 @@ export default function Project({ params }: { params: { slug: string } }) {
                   Software Development Portfolio
                 </div>
                 {project.descriptionLong.map((paragraph, index) => (
-                  <div className="text-black text-base leading-6 mt-4 max-md:max-w-full">
+                  <div
+                    key={`desc-para-${index}`}
+                    className="text-black text-base leading-6 mt-4 max-md:max-w-full">
                     {paragraph}
                   </div>
                 ))}
