@@ -3,21 +3,25 @@ import mailgun from "mailgun-js";
 
 const mg = mailgun({
   apiKey: process.env.MAILGUN_KEY!,
-  domain: "sima.dev",
+  domain: "mg.sima.dev",
 });
 
 export async function POST(req: NextRequest) {
-  const { email } = await req.json();
+  const { name, email, message } = await req.json();
 
   if (!email) {
     return NextResponse.json({ success: false });
   }
 
   mg.messages().send({
-    to: process.env.CONTACT_EMAIL!,
-    from: email,
+    to: "cjsima@gmail.com",
+    from: "contact@sima.dev",
     subject: "Contact from sima.dev",
-    text: email,
+    text: `
+      Name: ${name} 
+      Email: ${email}
+      Message: ${message}
+    `,
   });
 
   return NextResponse.json({ success: true });
