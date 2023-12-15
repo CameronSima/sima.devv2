@@ -5,7 +5,12 @@ const getAverageColor = require("fast-average-color-node").getAverageColor;
 const filenames = fs.readdirSync("./public");
 
 filenames.forEach(async (filename) => {
-  getAverageColor("./public/" + filename).then((color) => {
-    console.log(filename, color.hex);
-  });
+  console.log(filename);
+  getAverageColor("./public/" + filename)
+    .then((color) => {
+      console.log(filename, color.hex);
+    })
+    .catch((err) => {
+      console.log(filename, err);
+    });
 });

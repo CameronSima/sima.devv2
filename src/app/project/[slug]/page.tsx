@@ -1,17 +1,26 @@
+import type {
+  InferGetStaticPropsType,
+  GetStaticProps,
+  GetStaticPaths,
+} from "next";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { SkillTile } from "@/components/skillTile";
-import { getProjectFromSlug } from "@/projects";
+import { getProjectFromSlug, projects } from "@/projects";
 import { Project } from "@/models";
 
 import * as React from "react";
 import TechLogo from "@/components/TechLogo";
 
+export const generateStaticParams = () =>
+  projects.map((project) => ({
+    params: {
+      slug: project.slug,
+    },
+  }));
+
 export default function Project({ params }: { params: { slug: string } }) {
-  const project = getProjectFromSlug(params.slug as string);
-
-  console.log(params.slug, project);
-
+  const project = getProjectFromSlug(params.slug);
   if (!project) {
     return null;
   }
@@ -88,7 +97,7 @@ export default function Project({ params }: { params: { slug: string } }) {
             <div className="flex flex-col items-stretch w-6/12 max-md:w-full max-md:ml-0">
               <img
                 alt="An image"
-                style={{ backgroundColor: project.imageBackground }}
+                style={{ backgroundColor: project.imageBackground + "30" }}
                 loading="lazy"
                 src={`/${project.image}`}
                 className="aspect-[0.96] object-contain object-top w-full overflow-hidden grow max-md:max-w-full max-md:mt-10"
