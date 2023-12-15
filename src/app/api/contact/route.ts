@@ -1,4 +1,5 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { NextResponse } from "next/server";
 import mailgun from "mailgun-js";
 
 const mg = mailgun({
@@ -21,5 +22,5 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
     text: email,
   });
 
-  res.status(200).json({ success: true });
+  return NextResponse.json({ success: true });
 }
