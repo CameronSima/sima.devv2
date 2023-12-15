@@ -21,11 +21,8 @@ export default function Projects() {
         </div>
 
         {projects.map((project, index) => (
-          <div className="mt-6">
-            <ProjectOverview
-              key={`project-${project.name}-${index}`}
-              project={project}
-            />
+          <div key={`project-${project.name}-${index}`} className="mt-6">
+            <ProjectOverview project={project} />
           </div>
         ))}
       </div>
