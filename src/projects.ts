@@ -12,6 +12,7 @@ export const projects: Project[] = [
     client: "Nike",
     slug: "nike-never-done",
     image: "nike-never-done.png",
+    imageBackground: "#dcdbdb",
     skills: ["React Native", "Mobile", "Design"],
   },
   {
@@ -25,6 +26,7 @@ export const projects: Project[] = [
     client: "Lockheed Martin",
     slug: "lunar-rover",
     image: "lunar-rover.png",
+    imageBackground: "#464c5e",
     skills: ["React Native", "Mobile", "Livestreaming"],
   },
   {
@@ -38,6 +40,7 @@ export const projects: Project[] = [
     client: "AT&T",
     slug: "att-scavenger-hunt",
     image: "find-qr-code.png",
+    imageBackground: "#3b4c53",
     skills: ["Gaming", "AR", "Animation"],
   },
   {
@@ -50,7 +53,8 @@ export const projects: Project[] = [
     ],
     client: "AT&T",
     slug: "att-window-display",
-    image: "att-window-display.jpg",
+    image: "att-scavenger-hunt.png",
+    imageBackground: "#50aae1",
     skills: ["Gaming", "AR", "Animation"],
   },
   {
@@ -63,7 +67,8 @@ export const projects: Project[] = [
     ],
     client: "AT&T",
     slug: "att-cezanna",
-    image: "cezanna.jpg",
+    image: "cezanna.png",
+    imageBackground: "#beb5a6",
     skills: ["Gaming", "AR", "Animation"],
   },
   {
@@ -77,6 +82,7 @@ export const projects: Project[] = [
     client: "Small Threads",
     slug: "att-window-display",
     image: "willows-small.png",
+    imageBackground: "#bcbfbe",
     skills: ["Gaming", "AR", "Animation"],
   },
 ];

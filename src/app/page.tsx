@@ -91,7 +91,7 @@ export default function Home() {
               <img
                 loading="lazy"
                 src="/me_vangogh.jpeg"
-                className="aspect-[0.96] object-contain object-center w-full overflow-hidden grow max-md:max-w-full max-md:mt-10"
+                className="aspect-[0.96] object-contain object-top w-full overflow-hidden grow max-md:max-w-full max-md:mt-10"
               />
             </div>
           </div>
@@ -202,38 +202,6 @@ export default function Home() {
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/0fd411cadd5b52a30822aa97af5502d99e9c78cc2e48ded4f15e31926b8933a3?apiKey=743de8c190c34c4cbb3bf38ac8b5b69c&"
             className="aspect-[2.5] object-contain object-center w-[140px] overflow-hidden self-stretch shrink-0 max-w-full"
           />
-        </div>
-      </div>
-      <div className="items-stretch bg-white flex w-full flex-col justify-center px-16 py-12 max-md:max-w-full max-md:px-5">
-        <div className="mt-16 mb-10 max-md:max-w-full max-md:mr-1 max-md:mt-10">
-          <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
-            <div className="flex flex-col items-stretch w-6/12 max-md:w-full max-md:ml-0">
-              <div className="flex flex-col my-auto items-start max-md:max-w-full max-md:mt-10">
-                <div className="self-stretch text-black text-5xl font-bold leading-[58px] max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
-                  Discover Our Portfolio Projects
-                </div>
-                <div className="self-stretch text-black text-lg leading-7 mt-6 max-md:max-w-full">
-                  Explore our diverse range of projects and see our expertise in
-                  action.
-                </div>
-                <div className="items-stretch flex gap-4 mt-6 pt-4">
-                  <div className="text-white text-base leading-6 whitespace-nowrap justify-center items-stretch border bg-black grow px-6 py-3 border-solid border-black max-md:px-5">
-                    View
-                  </div>
-                  <div className="text-black text-base leading-6 whitespace-nowrap justify-center items-stretch border grow px-6 py-3 border-solid border-black max-md:px-5">
-                    Contact
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="flex flex-col items-stretch w-6/12 ml-5 max-md:w-full max-md:ml-0">
-              <img
-                loading="lazy"
-                srcSet="https://cdn.builder.io/api/v1/image/assets/TEMP/fa3b88fad892d1dad3d4e4c097a6346405a635639b7907d57abdd383edacbf8f?apiKey=743de8c190c34c4cbb3bf38ac8b5b69c&width=100 100w, https://cdn.builder.io/api/v1/image/assets/TEMP/fa3b88fad892d1dad3d4e4c097a6346405a635639b7907d57abdd383edacbf8f?apiKey=743de8c190c34c4cbb3bf38ac8b5b69c&width=200 200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fa3b88fad892d1dad3d4e4c097a6346405a635639b7907d57abdd383edacbf8f?apiKey=743de8c190c34c4cbb3bf38ac8b5b69c&width=400 400w, https://cdn.builder.io/api/v1/image/assets/TEMP/fa3b88fad892d1dad3d4e4c097a6346405a635639b7907d57abdd383edacbf8f?apiKey=743de8c190c34c4cbb3bf38ac8b5b69c&width=800 800w, https://cdn.builder.io/api/v1/image/assets/TEMP/fa3b88fad892d1dad3d4e4c097a6346405a635639b7907d57abdd383edacbf8f?apiKey=743de8c190c34c4cbb3bf38ac8b5b69c&width=1200 1200w, https://cdn.builder.io/api/v1/image/assets/TEMP/fa3b88fad892d1dad3d4e4c097a6346405a635639b7907d57abdd383edacbf8f?apiKey=743de8c190c34c4cbb3bf38ac8b5b69c&width=1600 1600w, https://cdn.builder.io/api/v1/image/assets/TEMP/fa3b88fad892d1dad3d4e4c097a6346405a635639b7907d57abdd383edacbf8f?apiKey=743de8c190c34c4cbb3bf38ac8b5b69c&width=2000 2000w, https://cdn.builder.io/api/v1/image/assets/TEMP/fa3b88fad892d1dad3d4e4c097a6346405a635639b7907d57abdd383edacbf8f?apiKey=743de8c190c34c4cbb3bf38ac8b5b69c&"
-                className="aspect-[1.54] object-contain object-center w-full overflow-hidden grow max-md:max-w-full max-md:mt-10"
-              />
-            </div>
-          </div>
         </div>
       </div>
       <Footer />

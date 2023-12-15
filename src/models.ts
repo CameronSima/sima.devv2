@@ -5,6 +5,7 @@ export interface Project {
   client: string;
   slug: string;
   image: string;
+  imageBackground: string;
   skills: string[];
 }
 

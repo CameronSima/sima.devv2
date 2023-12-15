@@ -8,6 +8,7 @@ export default function ProjectOverview({ project }: { project: Project }) {
       <div className="items-start flex grow flex-col max-md:mt-8">
         <Link href={`/project/${project.slug}`}>
           <img
+            style={{ backgroundColor: project.imageBackground + "30" }}
             loading="lazy"
             src={project.image}
             className="aspect-square object-contain object-center w-full self-stretch"
