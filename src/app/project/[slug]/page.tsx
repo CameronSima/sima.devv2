@@ -1,9 +1,9 @@
-import Discover from "@/components/Discover";
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import { SkillTile } from "@/components/skillTile";
 import { getProjectFromSlug } from "@/projects";
-import Image from "next/image";
+import { Project } from "@/models";
+
 import * as React from "react";
 
 export default function Project({ params }: { params: { slug: string } }) {
@@ -39,20 +39,22 @@ export default function Project({ params }: { params: { slug: string } }) {
             <div className="flex flex-col items-stretch w-[38%] ml-5 max-md:w-full max-md:ml-0">
               <div className="items-stretch flex flex-col max-md:max-w-full max-md:mt-10">
                 <div className="items-stretch flex justify-between gap-5 max-md:max-w-full max-md:flex-wrap">
-                  <div className="items-stretch flex grow basis-[0%] flex-col">
-                    <div className="text-black text-xl font-bold leading-7 whitespace-nowrap">
-                      Client
+                  {project.client && (
+                    <div className="items-stretch flex grow basis-[0%] flex-col">
+                      <div className="text-black text-xl font-bold leading-7 whitespace-nowrap">
+                        Client
+                      </div>
+                      <div className="text-black text-base leading-6 whitespace-nowrap mt-2">
+                        {project.client}
+                      </div>
                     </div>
-                    <div className="text-black text-base leading-6 whitespace-nowrap mt-2">
-                      {project.client}
-                    </div>
-                  </div>
+                  )}
                   <div className="items-stretch flex grow basis-[0%] flex-col">
                     <div className="text-black text-xl font-bold leading-7 whitespace-nowrap">
                       Date
                     </div>
                     <div className="text-black text-base leading-6 whitespace-nowrap mt-2">
-                      March 2023
+                      {project.date || "March 2023"}
                     </div>
                   </div>
                 </div>
@@ -70,7 +72,7 @@ export default function Project({ params }: { params: { slug: string } }) {
                       Website
                     </div>
                     <div className="text-black text-base leading-6 whitespace-nowrap mt-2">
-                      (decommissioned)
+                      <ProjectLink project={project} />
                     </div>
                   </div>
                 </div>
@@ -83,10 +85,8 @@ export default function Project({ params }: { params: { slug: string } }) {
         <div className="mt-16 mb-10 max-md:max-w-full max-md:mr-1 max-md:mt-10">
           <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
             <div className="flex flex-col items-stretch w-6/12 max-md:w-full max-md:ml-0">
-              <Image
+              <img
                 alt="An image"
-                width={100}
-                height={100}
                 style={{ backgroundColor: project.imageBackground }}
                 loading="lazy"
                 src={`/${project.image}`}
@@ -113,4 +113,14 @@ export default function Project({ params }: { params: { slug: string } }) {
       <Footer />
     </div>
   );
+}
+
+function ProjectLink({ project }: { project: Project }) {
+  if (project.link) {
+    return <a href={project.link}>{project.link}</a>;
+  } else if (project.githubLink) {
+    return <a href={project.githubLink}>GitHub</a>;
+  } else {
+    return <>{"(decommissioned)"}</>;
+  }
 }

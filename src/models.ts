@@ -2,19 +2,14 @@ export interface Project {
   name: string;
   descriptionBrief: string;
   descriptionLong: string[];
-  client: string;
+  client?: string;
+  role?: string;
+  date?: string;
   slug: string;
-  image: string;
-  imageBackground: string;
+  image?: string;
+  imageBackground?: string;
   skills: string[];
-}
-
-export interface SoftwareProject {
-  name: string;
-  descriptionBrief: string;
-  descriptionLong: string[];
-  slug: string;
-  image: string;
-  githubLink: string;
-  skills: string[];
+  technologies?: string[];
+  link?: string;
+  githubLink?: string;
 }

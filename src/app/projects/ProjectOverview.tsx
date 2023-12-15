@@ -5,22 +5,23 @@ import Link from "next/link";
 
 export default function ProjectOverview({ project }: { project: Project }) {
   return (
-    <>
-      <Link href={`/project/${project.slug}`}>
-        <Image
-          alt={project.name}
-          loading="lazy"
-          width={100}
-          height={100}
-          src={"/" + project.image}
-          style={{
-            minHeight: "400px",
-            backgroundColor: project.imageBackground,
-          }}
-          className="aspect-[2.05] object-contain object-center w-full self-stretch overflow-hidden mt-20 max-md:max-w-full max-md:mt-10"
-        />
-      </Link>
-      <div className="items-stretch self-stretch flex justify-between gap-5 mt-6 max-md:max-w-full max-md:flex-wrap">
+    <div className="mt-10">
+      {project.image && (
+        <Link href={`/project/${project.slug}`}>
+          <img
+            style={{
+              backgroundColor: project.imageBackground + "30",
+              height: "500px",
+              width: "100vw",
+            }}
+            loading="lazy"
+            src={project.image}
+            className="aspect-square object-contain object-center w-full self-stretch"
+          />
+        </Link>
+      )}
+
+      <div className="items-stretch self-stretch flex justify-between gap-5 mt-6 mb-10 max-md:max-w-full max-md:flex-wrap">
         <div className="items-stretch flex grow basis-[0%] flex-col max-md:max-w-full">
           <Link href={`/project/${project.slug}`}>
             <div className="text-black text-2xl font-bold leading-9 whitespace-nowrap max-md:max-w-full">
@@ -37,6 +38,6 @@ export default function ProjectOverview({ project }: { project: Project }) {
           {project.descriptionBrief}
         </div>
       </div>
-    </>
+    </div>
   );
 }

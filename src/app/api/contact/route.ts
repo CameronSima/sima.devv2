@@ -1,7 +1,5 @@
-import type { NextApiRequest, NextApiResponse } from "next";
 import { NextRequest, NextResponse } from "next/server";
 import mailgun from "mailgun-js";
-import { reportWebVitals } from "next/dist/build/templates/pages";
 
 const mg = mailgun({
   apiKey: process.env.MAILGUN_KEY!,

@@ -1,6 +1,5 @@
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import { SkillTile } from "@/components/skillTile";
 import { projects } from "@/projects";
 import * as React from "react";
 import ProjectOverview from "./ProjectOverview";
