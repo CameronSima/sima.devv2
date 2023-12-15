@@ -24,11 +24,6 @@ export default function Footer() {
                     <div className="text-black text-base font-semibold leading-6 whitespace-nowrap">
                       Links
                     </div>{" "}
-                    <Link href="/about">
-                      <div className="text-black text-sm leading-5 whitespace-nowrap mt-6">
-                        About
-                      </div>{" "}
-                    </Link>
                     <Link href="/projects">
                       <div className="text-black text-sm leading-5 whitespace-nowrap mt-4">
                         Projects

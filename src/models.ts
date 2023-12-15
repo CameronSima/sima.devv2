@@ -12,4 +12,5 @@ export interface Project {
   technologies?: string[];
   link?: string;
   githubLink?: string;
+  logos?: string[];
 }

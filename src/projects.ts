@@ -15,6 +15,7 @@ export const projects: Project[] = [
     image: "nike-never-done.png",
     imageBackground: "#dcdbdb",
     skills: ["React Native", "Mobile", "Design"],
+    logos: ["reactnative.png", "tailwind.jpeg", "typescript.png", "node.png"],
   },
   {
     name: "Lunar Rover Experience",
@@ -29,6 +30,7 @@ export const projects: Project[] = [
     image: "lunar-rover.png",
     imageBackground: "#464c5e",
     skills: ["React Native", "Mobile", "Livestreaming"],
+    logos: ["reactnative.png", "tailwind.jpeg", "typescript.png", "node.png"],
   },
   {
     name: "AT&T Scavenger Hunt",
@@ -87,6 +89,7 @@ export const projects: Project[] = [
     image: "willows-small.png",
     imageBackground: "#bcbfbe",
     skills: ["Design", "Web"],
+    logos: ["nextjs.png", "tailwind.jpeg", "typescript.png"],
   },
   {
     name: "ICloud Deduper",
@@ -99,6 +102,7 @@ export const projects: Project[] = [
     slug: "icloud-deduper",
     githubLink: "",
     skills: ["FastAPI", "Python", "Mobile", "Tensor Flow"],
+    logos: ["reactnative.png", "fastapi.png", "tensorflow.png"],
   },
   {
     name: "YoutTube Tape Storage",
@@ -111,7 +115,7 @@ export const projects: Project[] = [
       "Built with Golang.",
     ],
     slug: "youtube-tape-storage",
-    //image: "youtube-tape-storage.jpg",
+    image: "static.png",
     githubLink: "https://github.com/CameronSima/golang-tape-storage/tree/main",
     skills: ["Golang"],
   },
@@ -127,7 +131,15 @@ export const projects: Project[] = [
     image: "lingualighthouse2.png",
 
     link: "https://www.lingualighthouse.com/",
+    githubLink: "https://github.com/CameronSima/lingualighthouse",
     skills: ["React Native", "Mobile", "Animation"],
+    logos: [
+      "reactnative.png",
+      "ddb.png",
+      "typescript.png",
+      "lambda.png",
+      "sqs.png",
+    ],
   },
   {
     name: "Telecaster.io",
@@ -140,9 +152,10 @@ export const projects: Project[] = [
       "Built with Angular, TypeScript, ffmpeg, and NestJS.",
     ],
     slug: "telecaster",
-    //image: "youtube-text-search.jpg",
+    image: "satellite.png",
     //githubLink: "",
     skills: ["NestJS", "Nginx", "Angular", "WebRTC"],
+    logos: ["angular.png", "nestjs.png", "webrtc.png", "nginx.png"],
   },
   {
     name: "News Skewer",
@@ -157,6 +170,7 @@ export const projects: Project[] = [
     image: "newsskewer.png",
     link: "https://web.archive.org/web/20221003020508/https://newsskewer.com/",
     skills: ["Django", "TailwindCSS", "AlpineJS", "Web"],
+    logos: ["django.png", "tailwind.jpeg", "alpinejs.png", "python.png"],
   },
   {
     name: "Wordsmith",
@@ -170,6 +184,7 @@ export const projects: Project[] = [
     image: "wordsmith.png",
     githubLink: "",
     skills: ["Unity", "Django", "Python", "Gaming"],
+    logos: ["unity.png", "django.png", "python.png"],
   },
 ];
 

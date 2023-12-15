@@ -54,6 +54,7 @@ export default function ContactForm() {
             Name
           </div>{" "}
           <input
+            value={form.name}
             onChange={(e) => setForm({ ...form, name: e.target.value })}
             className="text-neutral-600 text-base leading-6 whitespace-nowrap items-stretch self-stretch border bg-white justify-center mt-2 p-3 border-solid border-black max-md:max-w-full"
           />
@@ -61,6 +62,7 @@ export default function ContactForm() {
             Email
           </div>{" "}
           <input
+            value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
             className="text-neutral-600 text-base leading-6 whitespace-nowrap items-stretch self-stretch border bg-white justify-center mt-2 p-3 border-solid border-black max-md:max-w-full"
           />
@@ -68,6 +70,7 @@ export default function ContactForm() {
             Message
           </div>{" "}
           <input
+            value={form.message}
             onChange={(e) => setForm({ ...form, message: e.target.value })}
             className="text-neutral-600 text-base leading-6 whitespace-nowrap items-stretch self-stretch border bg-white mt-2 pt-3 pb-28 px-3 border-solid border-black max-md:max-w-full max-md:pb-10"
           />

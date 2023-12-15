@@ -1,5 +1,6 @@
 import Footer from "@/components/footer";
 import Header from "@/components/header";
+import Testimonial from "@/components/Testimonial";
 import { projects } from "@/projects";
 import * as React from "react";
 import ProjectOverview from "./ProjectOverview";
@@ -20,29 +21,22 @@ export default function Projects() {
         </div>
 
         {projects.map((project, index) => (
-          <ProjectOverview
-            key={`project-${project.name}-${index}`}
-            project={project}
-          />
+          <div className="mt-6">
+            <ProjectOverview
+              key={`project-${project.name}-${index}`}
+              project={project}
+            />
+          </div>
         ))}
-
-        <div className="text-black text-base leading-6 whitespace-nowrap justify-center items-stretch border mt-16 mb-10 px-7 py-3 border-solid border-black max-md:mt-10 max-md:px-5">
-          Button
-        </div>
       </div>
-      <div className="items-center bg-white flex w-full flex-col px-20 py-12 max-md:max-w-full max-md:px-5">
-        <div className="text-black text-center text-2xl font-bold leading-9 max-w-screen-md mt-8 max-md:max-w-full">
-          The work done by the team on my project was exceptional. They
-          delivered a high-quality product that exceeded my expectations.
-        </div>
-
-        <div className="text-black text-center text-base font-semibold leading-6 whitespace-nowrap mt-4">
-          John Doe
-        </div>
-        <div className="text-black text-center text-base leading-6 whitespace-nowrap mb-10">
-          CEO, ABC Inc.
-        </div>
-      </div>
+      <Testimonial
+        content="The work done by Cam on my project was exceptional. He delivered a
+          high-quality product that exceeded my expectations."
+        name="Mike Sabolick"
+        position="CEO"
+        image="mike.png"
+        company="Party Headquarters"
+      />
 
       <Footer />
     </div>
