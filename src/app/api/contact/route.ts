@@ -6,7 +6,7 @@ const mg = mailgun({
   domain: "sima.dev",
 });
 
-export default async function POST(req: NextApiRequest, res: NextApiResponse) {
+export async function POST(req: NextApiRequest, res: NextApiResponse) {
   const { email } = JSON.parse(req.body);
 
   if (!email) {
