@@ -1,18 +1,18 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import mailgun from "mailgun-js";
+import { reportWebVitals } from "next/dist/build/templates/pages";
 
 const mg = mailgun({
   apiKey: process.env.MAILGUN_KEY!,
   domain: "sima.dev",
 });
 
-export async function POST(req: NextApiRequest, res: NextApiResponse) {
-  const { email } = JSON.parse(req.body);
+export async function POST(req: NextRequest) {
+  const { email } = await req.json();
 
   if (!email) {
-    res.status(400).json({ error: "Missing body parameter" });
-    return;
+    return NextResponse.json({ success: false });
   }
 
   mg.messages().send({
