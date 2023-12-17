@@ -63,7 +63,7 @@ export const projects: Project[] = [
   {
     name: "Cezanna",
     descriptionBrief:
-      "Promotional web experience for Cezanne exhibit at Philadelphia Museum of Art",
+      "Promotional web experience for the Cezanne exhibit at Philadelphia Museum of Art",
     descriptionLong: [
       "Contributed web development and design for a a photobooth exibit at the Philadelphia Museum of Art.",
       "Users can take a photo of themselves and apply a Cezanne-inspired filter ans frame to their photo. The user can then share their photo on social media.",
@@ -93,7 +93,8 @@ export const projects: Project[] = [
   },
   {
     name: "ICloud Deduper",
-    descriptionBrief: "A mobile app to dedupe your iCloud photos",
+    descriptionBrief:
+      "A mobile app find and delete duplicated images iCloud photos",
     descriptionLong: [
       "ICloud Deduper is a mobile app that helps you find and delete duplicate or very similar photos from your iCloud account.",
       "Have you ever taken many photos of the same scene to get the perfect shot? Or taken a burst of photos to capture a moment? ICloud Deduper helps you find and delete these duplicate photos while leaving the one best image, freeing up space in your iCloud account.",
@@ -161,7 +162,7 @@ export const projects: Project[] = [
   },
   {
     name: "News Skewer",
-    descriptionBrief: "A tool to search YouTube videos by text",
+    descriptionBrief: "ML-powered news aggregator",
     descriptionLong: [
       "A news aggregator that lets you see how different news sources are covering the same story.",
       "News articles are grouped by story, and each story is graded using positivity/ negativity and objectivity scores. Articles are then compared against similar articles from other news sources.",

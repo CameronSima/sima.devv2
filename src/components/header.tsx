@@ -13,14 +13,18 @@ export default function Header() {
         <div className="justify-between items-center self-stretch flex gap-5 max-md:max-w-full max-md:flex-wrap">
           <div className="items-stretch flex justify-between gap-5 my-auto max-md:justify-center">
             <Link href="/projects">
-              <div className="text-black text-base leading-6">Projects</div>
+              <div className="text-black text-base hover:underline leading-6">
+                Projects
+              </div>
             </Link>
             <Link href="/skills">
-              <div className="text-black text-base leading-6">Skills</div>
+              <div className="text-black text-base hover:underline leading-6">
+                Skills
+              </div>
             </Link>
             <div className="justify-between items-stretch flex gap-1">
               <Link href="/contact">
-                <div className="text-black text-base leading-6 grow whitespace-nowrap">
+                <div className="text-black text-base hover:underline leading-6 grow whitespace-nowrap">
                   Contact
                 </div>
               </Link>

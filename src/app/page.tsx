@@ -93,7 +93,7 @@ export default function Home() {
             <div className="flex flex-col items-stretch w-6/12 ml-5 max-md:w-full max-md:ml-0">
               <img
                 loading="lazy"
-                src="/me_vangogh.jpeg"
+                src="/me.jpeg"
                 className="aspect-[0.96] object-contain object-top w-full overflow-hidden grow max-md:max-w-full max-md:mt-10"
               />
             </div>

@@ -75,7 +75,7 @@ export default function Footer() {
               </div>
             </div>
           </div>
-          <div className="flex flex-col items-stretch w-[56%] ml-5 max-md:w-full max-md:ml-0">
+          <div className="flex flex-col items-stretch w-[15%] ml-5 max-md:w-full max-md:ml-0">
             <img src="/christchurch.png" />{" "}
           </div>
         </div>
