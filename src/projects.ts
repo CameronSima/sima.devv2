@@ -2,6 +2,24 @@ import { Project } from "./models";
 
 export const projects: Project[] = [
   {
+    name: "Apeta",
+    descriptionBrief:
+      "IOS app for learning skills and earning for sharing expertise",
+    descriptionLong: [
+      "Master an art or a sport with Apeta. Apeta is a reputation-based community for learning and mastering a complex skill like playing an instrument or playing a sport. Leverage your friends and the Apeta community to learn. Show your progress learning an activity to earn milestones and badges. As an expert, you can build a book of business and earn all within the app. Apeta uses its proprietary AI vector database to categorize activity-specific topics and highlight the takeaways for everyone's benefit.",
+      "Led development of the mobile app with React Native, as well as backend services using Express.js, Prisma, React Query, MongoDB, and a suite of serverless AWS services.",
+      "Payment processing using Stripe, both for accepting payments from users and paying out to experts using Stripe connected accounts.",
+      "Planned and executed initial MVP launch to 100+ users. Additional responsibilities include product management, design, marketing, investor pitches, and technical project roadmap.",
+    ],
+    slug: "apeta",
+    image: "apeta.webp",
+    link: "https://apps.apple.com/us/app/apeta/id6461686797",
+    linkText: "App Store",
+    skills: ["Project management", "IOS", "AWS", "cross-platform"],
+    role: "CTO",
+    date: "2023",
+  },
+  {
     name: "Nike Never Done campaign",
     date: "2021",
     descriptionBrief: "A mobile app for Nike's Never Done ad campaign",
@@ -29,7 +47,7 @@ export const projects: Project[] = [
     slug: "lunar-rover",
     image: "lunar-rover.png",
     imageBackground: "#464c5e",
-    skills: ["React Native", "Mobile", "Livestreaming"],
+    skills: ["React Native", "Mobile", "Video livestreaming"],
     logos: ["reactnative.png", "tailwind.jpeg", "typescript.png", "node.png"],
   },
   {

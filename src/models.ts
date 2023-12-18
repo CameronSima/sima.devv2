@@ -11,6 +11,7 @@ export interface Project {
   skills: string[];
   technologies?: string[];
   link?: string;
+  linkText?: string;
   githubLink?: string;
   logos?: string[];
 }

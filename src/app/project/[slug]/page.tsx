@@ -51,37 +51,37 @@ export default function Project({ params }: { params: { slug: string } }) {
                 <div className="items-stretch flex justify-between gap-5 max-md:max-w-full max-md:flex-wrap">
                   {project.client && (
                     <div className="items-stretch flex grow basis-[0%] flex-col">
-                      <div className="text-black text-xl font-bold leading-7 whitespace-nowrap">
+                      <div className="text-black text-xl font-bold leading-7 ">
                         Client
                       </div>
-                      <div className="text-black text-base leading-6 whitespace-nowrap mt-2">
+                      <div className="text-black text-base leading-6  mt-2">
                         {project.client}
                       </div>
                     </div>
                   )}
                   <div className="items-stretch flex grow basis-[0%] flex-col">
-                    <div className="text-black text-xl font-bold leading-7 whitespace-nowrap">
+                    <div className="text-black text-xl font-bold leading-7 ">
                       Date
                     </div>
-                    <div className="text-black text-base leading-6 whitespace-nowrap mt-2">
+                    <div className="text-black text-base leading-6  mt-2">
                       {project.date || "March 2023"}
                     </div>
                   </div>
                 </div>
                 <div className="items-stretch flex justify-between gap-5 mt-8 max-md:max-w-full max-md:flex-wrap">
                   <div className="items-stretch flex grow basis-[0%] flex-col">
-                    <div className="text-black text-xl font-bold leading-7 whitespace-nowrap">
+                    <div className="text-black text-xl font-bold leading-7 ">
                       Role
                     </div>
-                    <div className="text-black text-base leading-6 whitespace-nowrap mt-2">
-                      Lead Developer
+                    <div className="text-black text-base leading-6  mt-2">
+                      {project.role || "Lead Developer"}
                     </div>
                   </div>
                   <div className="items-stretch flex grow basis-[0%] flex-col">
-                    <div className="text-black text-xl font-bold leading-7 whitespace-nowrap">
+                    <div className="text-black text-xl font-bold leading-7">
                       {project.link && project.githubLink ? "Links" : "Link"}
                     </div>
-                    <div className="text-black text-base leading-6 whitespace-nowrap mt-2">
+                    <div className="text-black text-base leading-6  mt-2">
                       <ProjectLink project={project} />
                     </div>
                   </div>
@@ -133,17 +133,13 @@ export default function Project({ params }: { params: { slug: string } }) {
 
 function ProjectLink({ project }: { project: Project }) {
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 flex-wrap">
       {project.link && (
-        <div>
-          <a href={project.link}>{project.link}</a>
-        </div>
+        <a className="underline" href={project.link}>
+          {project.linkText || project.link}
+        </a>
       )}
-      {project.githubLink && (
-        <div>
-          <a href={project.githubLink}>GitHub</a>
-        </div>
-      )}
+      {project.githubLink && <a href={project.githubLink}>GitHub</a>}
       {!project.link && !project.githubLink && <>{"(decommissioned)"}</>}
     </div>
   );
