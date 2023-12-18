@@ -1,6 +1,6 @@
 import Footer from "@/components/footer";
 import Header from "@/components/header";
-import Testimonial from "@/components/Testimonial";
+import Testimonial, { TestimonalCarousel } from "@/components/Testimonial";
 import { projects } from "@/projects";
 import * as React from "react";
 import ProjectOverview from "./ProjectOverview";
@@ -26,15 +26,7 @@ export default function Projects() {
           </div>
         ))}
       </div>
-      <Testimonial
-        content="The work done by Cam on my project was exceptional. He delivered a
-          high-quality product that exceeded my expectations."
-        name="Mike Sabolick"
-        position="CEO"
-        image="mike.png"
-        company="Party Headquarters"
-      />
-
+      <TestimonalCarousel />
       <Footer />
     </div>
   );

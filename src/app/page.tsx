@@ -1,7 +1,7 @@
 import Footer from "@/components/footer";
 import Header from "@/components/header";
 import ProjectOverview from "@/components/ProjectOverview";
-import Testimonial from "@/components/Testimonial";
+import Testimonial, { TestimonalCarousel } from "@/components/Testimonial";
 import { projects } from "@/projects";
 import Link from "next/link";
 import * as React from "react";
@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-stretch">
       <Header />
-      <div className="items-stretch bg-white flex w-full flex-col px-16 py-12 max-md:max-w-full max-md:px-5">
+      <div className="items-stretch bg-white flex w-full flex-col px-16 md:py-12 max-md:max-w-full max-md:px-5">
         <div className="mt-16 max-md:max-w-full max-md:mt-10">
           <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
             <div className="flex flex-col items-stretch w-6/12 max-md:w-full max-md:ml-0">
@@ -49,19 +49,16 @@ export default function Home() {
         </div>{" "}
         <img
           loading="lazy"
-          srcSet="skyline.png"
+          srcSet="hero.png"
           className="object-contain object-center w-full overflow-hidden mt-20 mb-10 max-md:max-w-full max-md:mt-10"
         />
       </div>{" "}
-      <div className="items-stretch bg-white flex w-full flex-col justify-center px-16 py-12 max-md:max-w-full max-md:px-5">
+      <div className="items-stretch bg-white flex w-full flex-col justify-center px-16 md:py-12 max-md:max-w-full max-md:px-5">
         <div className="mt-16 mb-10 max-md:max-w-full max-md:mr-1 max-md:mt-10">
           <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
             <div className="flex flex-col items-stretch w-6/12 max-md:w-full max-md:ml-0">
               <div className="items-start flex flex-col my-auto max-md:max-w-full max-md:mt-10">
-                <div className="text-black text-center text-base font-semibold leading-6 self-stretch max-md:max-w-full">
-                  Experienced
-                </div>{" "}
-                <div className="self-stretch text-black text-5xl font-bold leading-[58px] mt-4 max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
+                <div className="self-stretch text-black text-5xl font-bold leading-[58px] max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
                   Passionate software developer with extensive expertise
                 </div>{" "}
                 <div className="self-stretch text-black text-lg leading-7 mt-6 max-md:max-w-full">
@@ -100,11 +97,11 @@ export default function Home() {
           </div>
         </div>
       </div>{" "}
-      <div className="items-stretch bg-white flex w-full flex-col justify-center px-16 py-12 max-md:max-w-full max-md:px-5">
+      <div className="items-stretch bg-white flex w-full flex-col justify-center px-16 md:py-12 max-md:max-w-full max-md:px-5">
         <div className="mt-16 mb-10 max-md:max-w-full max-md:mr-1 max-md:mt-10">
           <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
             <div className="flex flex-col items-stretch w-6/12 max-md:w-full max-md:ml-0">
-              <div className="flex flex-col my-auto items-start max-md:max-w-full max-md:mt-10">
+              <div className="flex flex-col mb-auto items-start max-md:max-w-full max-md:mt-10">
                 <div className="self-stretch text-black text-4xl font-bold leading-10 mt-6 max-md:max-w-full">
                   Unleash the Power of Innovation with Expert Software
                   Development Services
@@ -126,7 +123,7 @@ export default function Home() {
           </div>
         </div>
       </div>{" "}
-      <div className="items-center bg-white flex w-full flex-col px-16 py-12 max-md:max-w-full max-md:px-5">
+      <div className="items-center bg-white flex w-full flex-col px-16 md:py-12 max-md:max-w-full max-md:px-5">
         <div className="text-black text-center text-base font-semibold leading-6 self-center whitespace-nowrap mt-16 max-md:mt-10">
           Projects
         </div>{" "}
@@ -149,14 +146,7 @@ export default function Home() {
           </div>
         </Link>
       </div>{" "}
-      <Testimonial
-        name="Aleister Wilders"
-        content="I am extremely impressed with Cam's services. His
-          expertise and attention to detail have greatly benefited my projects."
-        company="PSYLKO"
-        position="CEO"
-        image="/aleister.png"
-      />
+      <TestimonalCarousel />
       <Footer />
     </div>
   );

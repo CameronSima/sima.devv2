@@ -1,3 +1,82 @@
+export function TestimonalCarousel() {
+  return (
+    <div className="carousel w-full">
+      <div id="slide1" className="carousel-item relative w-full">
+        <Testimonial
+          name="Aleister Wilders"
+          content="I am extremely impressed with Cam's services. His
+          expertise and attention to detail have greatly benefited my projects."
+          company="PSYLKO"
+          position="CEO"
+          image="/aleister.png"
+        />
+        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#slide4" className="btn btn-circle">
+            ❮
+          </a>
+          <a href="#slide2" className="btn btn-circle">
+            ❯
+          </a>
+        </div>
+      </div>
+      <div id="slide2" className="carousel-item relative w-full">
+        <Testimonial
+          content="The work done by Cam on my project was exceptional. He delivered a
+          high-quality product that exceeded my expectations."
+          name="Mike Sabolick"
+          position="CEO"
+          image="mike.png"
+          company="Party Headquarters"
+        />
+        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#slide1" className="btn btn-circle">
+            ❮
+          </a>
+          <a href="#slide3" className="btn btn-circle">
+            ❯
+          </a>
+        </div>
+      </div>
+      <div id="slide3" className="carousel-item relative w-full">
+        <Testimonial
+          name="Aleister Wilders"
+          content="I am extremely impressed with Cam's services. His
+          expertise and attention to detail have greatly benefited my projects."
+          company="PSYLKO"
+          position="CEO"
+          image="/aleister.png"
+        />
+        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#slide2" className="btn btn-circle">
+            ❮
+          </a>
+          <a href="#slide4" className="btn btn-circle">
+            ❯
+          </a>
+        </div>
+      </div>
+      <div id="slide4" className="carousel-item relative w-full">
+        <Testimonial
+          content="The work done by Cam on my project was exceptional. He delivered a
+          high-quality product that exceeded my expectations."
+          name="Mike Sabolick"
+          position="CEO"
+          image="mike.png"
+          company="Party Headquarters"
+        />
+        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
+          <a href="#slide3" className="btn btn-circle">
+            ❮
+          </a>
+          <a href="#slide1" className="btn btn-circle">
+            ❯
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Testimonial({
   company,
   position,

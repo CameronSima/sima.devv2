@@ -4,7 +4,7 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <div className="items-stretch bg-white flex w-full flex-col px-16 py-12 max-md:max-w-full max-md:px-5">
+    <div className="items-stretch bg-white flex w-full flex-col px-16 md:py-12 max-md:max-w-full max-md:px-5">
       <div className="mt-8 pb-2 max-md:max-w-full">
         <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
           <div className="flex flex-col items-stretch w-[44%] max-md:w-full max-md:ml-0">
@@ -46,7 +46,7 @@ export default function Footer() {
                     <div className="text-black text-base font-semibold leading-6 whitespace-nowrap">
                       Social
                     </div>{" "}
-                    <div className="items-stretch flex justify-between gap-3 py-2">
+                    <div className="items-stretch flex justify-start gap-3 py-2">
                       <img
                         loading="lazy"
                         src="https://cdn.builder.io/api/v1/image/assets/TEMP/489f6383710b027a0fa9bce5d3ba6c3d2d92dbf504ccbbf107bda824799f67e6?apiKey=743de8c190c34c4cbb3bf38ac8b5b69c&"
@@ -58,7 +58,7 @@ export default function Footer() {
                         </div>
                       </Link>
                     </div>{" "}
-                    <div className="items-stretch flex justify-between gap-3 py-2">
+                    <div className="items-stretch flex justify-start gap-3 py-2">
                       <img
                         loading="lazy"
                         src="/github-mark.svg"
