@@ -39,13 +39,11 @@ export default function Skills() {
           <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
             <div className="flex flex-col items-stretch w-[33%] max-md:w-full max-md:ml-0">
               <div className="items-stretch flex grow flex-col max-md:mt-10">
-                <Image
-                  height={100}
-                  width={100}
+                <img
                   alt="An image"
                   loading="lazy"
                   src="/logos/node.png"
-                  className="aspect-[1.69] object-contain object-center w-full overflow-hidden"
+                  className="aspect-[1.69] p-6 object-contain object-center w-full overflow-hidden"
                 />{" "}
                 <div className="text-black text-center text-3xl font-bold leading-10  mt-8">
                   Programming Languages
@@ -56,11 +54,9 @@ export default function Skills() {
                 </div>
               </div>
             </div>{" "}
-            <div className="flex flex-col items-stretch w-[33%] ml-5 max-md:w-full max-md:ml-0">
+            <div className="flex flex-col p-6 items-stretch w-[33%] ml-5 max-md:w-full max-md:ml-0">
               <div className="items-stretch flex grow flex-col max-md:mt-10">
-                <Image
-                  height={100}
-                  width={100}
+                <img
                   alt="An image"
                   loading="lazy"
                   src="/logos/nextjs.png"
@@ -77,12 +73,10 @@ export default function Skills() {
             </div>{" "}
             <div className="flex flex-col items-stretch w-[33%] ml-5 max-md:w-full max-md:ml-0">
               <div className="items-stretch flex grow flex-col max-md:mt-10">
-                <Image
-                  height={100}
-                  width={100}
+                <img
                   alt="An image"
                   loading="lazy"
-                  src="/logos/lambda.png"
+                  src="/awscert.png"
                   className="aspect-[1.69] object-contain object-center w-full overflow-hidden"
                 />{" "}
                 <div className="text-black text-center text-3xl font-bold leading-10  mt-8">
