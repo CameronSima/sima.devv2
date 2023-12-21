@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse } from "next/server";
-import mailgun from "mailgun-js";
+import FormData from "form-data";
+import Mailgun from "mailgun.js";
 
-const mg = mailgun({
-  apiKey: process.env.MAILGUN_KEY!,
-  domain: "mg.sima.dev",
+const mg = new Mailgun(FormData).client({
+  username: "api",
+  key: process.env.MAILGUN_KEY!,
 });
 
 export async function POST(req: NextRequest) {
@@ -13,7 +14,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ success: false });
   }
 
-  mg.messages().send({
+  await mg.messages.create("mg.sima.dev", {
     to: "cjsima@gmail.com",
     from: "contact@sima.dev",
     subject: "Contact from sima.dev",
