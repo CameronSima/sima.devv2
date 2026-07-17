@@ -2,36 +2,26 @@
 
 import { useState } from "react";
 
+const CONTACT_EMAIL = "cam@sima.dev";
+
 const inputClass =
   "w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-slate-100 placeholder:text-slate-500 outline-none transition-colors focus:border-sky-400/70 focus:bg-white/[0.07]";
 
 export default function ContactForm() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [status, setStatus] = useState<
-    "idle" | "loading" | "success" | "error"
-  >("idle");
 
   const isValid =
     form.name.trim() && form.email.trim().includes("@") && form.message.trim();
 
-  const submit = async (e: React.FormEvent) => {
+  const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!isValid || status === "loading") return;
-    setStatus("loading");
-    try {
-      const res = await fetch("/api/contact", {
-        method: "POST",
-        body: JSON.stringify(form),
-      });
-      if (res.ok) {
-        setStatus("success");
-        setForm({ name: "", email: "", message: "" });
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
+    if (!isValid) return;
+
+    const subject = `Contact from ${form.name}`;
+    const body = `${form.message}\n\n— ${form.name} (${form.email})`;
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+      subject,
+    )}&body=${encodeURIComponent(body)}`;
   };
 
   return (
@@ -89,21 +79,14 @@ export default function ContactForm() {
       <div className="flex items-center gap-4 pt-1">
         <button
           type="submit"
-          disabled={!isValid || status === "loading"}
+          disabled={!isValid}
           className="btn-primary disabled:cursor-not-allowed disabled:opacity-40"
         >
-          {status === "loading" ? "Transmitting…" : "Send transmission"}
+          Send transmission
         </button>
-        {status === "success" && (
-          <p className="text-sm font-medium text-emerald-400" role="status">
-            Message received — I&apos;ll get back to you soon.
-          </p>
-        )}
-        {status === "error" && (
-          <p className="text-sm font-medium text-rose-400" role="status">
-            Transmission failed. Try again or ping me on LinkedIn.
-          </p>
-        )}
+        <p className="text-sm text-slate-500">
+          Opens your email client, addressed to {CONTACT_EMAIL}.
+        </p>
       </div>
     </form>
   );

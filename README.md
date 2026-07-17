@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+sima.dev — Cam Sima's portfolio site, built with [Next.js](https://nextjs.org/) 14 App Router.
 
-## Getting Started
-
-First, run the development server:
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Static build
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This project is configured for static export (`output: "export"` in `next.config.js`). There is no server-side code — the contact form opens the visitor's email client via a `mailto:` link instead of calling an API route.
 
-## Learn More
+```bash
+npm run build
+```
 
-To learn more about Next.js, take a look at the following resources:
+This produces a fully static site in `out/`. Preview it locally with:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run start
+# runs: npx serve out
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Deploying on Coolify
 
-## Deploy on Vercel
+1. **Create a new resource** in Coolify → *Add Resource* → *Public Repository* (or connect your GitHub app) and point it at this repo/branch.
+2. **Build pack**: choose **Static Site** (Coolify's Nixpacks-based static build pack), or configure it manually as below.
+3. **Build settings**:
+   - Install command: `npm install`
+   - Build command: `npm run build`
+   - Publish/output directory: `out`
+4. **Port**: not needed for a static site — Coolify serves the `out/` directory directly via its built-in static file server (Nginx/Caddy under the hood).
+5. **Environment variables**: none are required. The site has no server-side secrets since the API route was removed.
+6. **Domain**: attach `sima.dev` (or your domain) under the resource's *Domains* tab and let Coolify issue the Let's Encrypt certificate.
+7. Click **Deploy**. Coolify will run the install/build steps in a container, then publish the contents of `out/` behind its static server.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### If you'd rather use a Dockerfile
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Coolify also supports a plain static Dockerfile if you prefer full control over the serving layer:
+
+```dockerfile
+FROM node:20-alpine AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM nginx:alpine
+COPY --from=build /app/out /usr/share/nginx/html
+EXPOSE 80
+```
+
+Set Coolify's build pack to **Dockerfile** and it will build and serve this image directly.
+
+## Learn more
+
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Next.js Static Exports](https://nextjs.org/docs/app/building-your-application/deploying/static-exports)
+- [Coolify Documentation](https://coolify.io/docs)
