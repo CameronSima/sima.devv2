@@ -5,18 +5,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "npx serve@latest out",
     "lint": "next lint"
   },
   "dependencies": {
-    "form-data": "^4.0.0",
-    "mailgun.js": "^9.4.0",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
-    "@types/form-data": "^2.5.0",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
