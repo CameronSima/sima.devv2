@@ -3,108 +3,262 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --bg: #05070f;
+  --bg-raised: #0a0f1e;
+  --surface: rgba(148, 163, 184, 0.06);
+  --border: rgba(148, 163, 184, 0.14);
+  --border-bright: rgba(148, 163, 184, 0.3);
+  --text: #e2e8f0;
+  --text-dim: #94a3b8;
+  --amber: #fbbf24;
+  --amber-deep: #f59e0b;
+  --sky: #38bdf8;
+  --sky-deep: #0ea5e9;
+  --glow-amber: rgba(251, 191, 36, 0.35);
+  --glow-sky: rgba(56, 189, 248, 0.35);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+html {
+  scroll-behavior: smooth;
+  color-scheme: dark;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
 }
 
-.rainbow-text {
-  /* Create a conic gradient. */
-  /* Double percentages to avoid blur (#000 10%, #fff 10%, #fff 20%, ...). */
-  background: #ca4246;
-  background-color: #ca4246;
-  background: conic-gradient(
-    #ca4246 16.666%,
-    #e16541 16.666%,
-    #e16541 33.333%,
-    #f18f43 33.333%,
-    #f18f43 50%,
-    #8b9862 50%,
-    #8b9862 66.666%,
-    #476098 66.666%,
-    #476098 83.333%,
-    #a7489b 83.333%
+::selection {
+  background: var(--amber);
+  color: #0a0f1e;
+}
+
+/* ---------- Scroll progress bar (CSS scroll-driven animation) ---------- */
+
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  z-index: 60;
+  background: linear-gradient(90deg, var(--amber), var(--sky));
+  transform-origin: 0 50%;
+  transform: scaleX(0);
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    animation: grow-progress linear both;
+    animation-timeline: scroll(root);
+  }
+  @keyframes grow-progress {
+    from {
+      transform: scaleX(0);
+    }
+    to {
+      transform: scaleX(1);
+    }
+  }
+}
+
+/* ---------- Scroll reveal (driven by IntersectionObserver) ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Spotlight cards (mouse-tracked radial highlight) ---------- */
+
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    480px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(148, 197, 255, 0.1),
+    transparent 55%
   );
+  pointer-events: none;
+  z-index: 1;
+}
 
-  /* Set thee background size and repeat properties. */
-  background-size: 57%;
-  background-repeat: repeat;
+.spotlight-card:hover::before {
+  opacity: 1;
+}
 
-  /* Use the text as a mask for the background. */
-  /* This will show the gradient as a text color rather than element bg. */
+/* ---------- Text effects ---------- */
+
+.text-gradient-fire {
+  background: linear-gradient(100deg, #fde68a 0%, var(--amber) 35%, #fb7185 80%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
-
-  /* Animate the text when loading the element. */
-  /* This animates it on page load and when hovering out. */
-  /* animation: rainbow-text-animation-rev 0.5s ease forwards; */
-
-  cursor: pointer;
+  color: transparent;
 }
 
-/* Add animation on hover. */
-.rainbow-text:hover {
-  animation: rainbow-text-animation 0.5s ease forwards;
+.text-gradient-sky {
+  background: linear-gradient(100deg, #bae6fd, var(--sky) 50%, #818cf8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
-/* Move the background and make it larger. */
-/* Animation shown when hovering over the text. */
-@keyframes rainbow-text-animation {
-  0% {
-    background-size: 57%;
-    background-position: 0 0;
+/* ---------- Ambient background grid ---------- */
+
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black 30%, transparent 75%);
+}
+
+/* ---------- Buttons ---------- */
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  padding: 0.8rem 1.6rem;
+  font-weight: 600;
+  color: #0a0f1e;
+  background: linear-gradient(135deg, #fde68a, var(--amber) 45%, var(--amber-deep));
+  box-shadow:
+    0 0 0 1px rgba(251, 191, 36, 0.4),
+    0 8px 30px -8px var(--glow-amber);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.06);
+  box-shadow:
+    0 0 0 1px rgba(251, 191, 36, 0.55),
+    0 14px 40px -8px var(--glow-amber);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  padding: 0.8rem 1.6rem;
+  font-weight: 600;
+  color: var(--text);
+  border: 1px solid var(--border-bright);
+  background: var(--surface);
+  backdrop-filter: blur(8px);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.btn-ghost:hover {
+  transform: translateY(-2px);
+  border-color: var(--sky);
+  background: rgba(56, 189, 248, 0.08);
+}
+
+/* ---------- Misc ---------- */
+
+.card {
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  background: linear-gradient(180deg, rgba(148, 163, 184, 0.07), rgba(148, 163, 184, 0.02));
+  transition:
+    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-bright);
+  box-shadow: 0 24px 60px -24px rgba(2, 6, 23, 0.9);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 9999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+  white-space: nowrap;
+}
+
+.blink {
+  animation: blink 1.2s steps(2, start) infinite;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
   }
-  20% {
-    background-size: 57%;
-    background-position: 0 1em;
-  }
+}
+
+@keyframes float-slow {
+  0%,
   100% {
-    background-size: 300%;
-    background-position: -9em 1em;
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
 
-/* Move the background and make it smaller. */
-/* Animation shown when entering the page and after the hover animation. */
-@keyframes rainbow-text-animation-rev {
-  0% {
-    background-size: 300%;
-    background-position: -9em 1em;
-  }
-  20% {
-    background-size: 57%;
-    background-position: 0 1em;
-  }
-  100% {
-    background-size: 57%;
-    background-position: 0 0;
-  }
-}
-
-@media (min-width: 1025px) {
-  .App {
-    padding: 0 4rem 0 4rem;
-  }
-}
-
-.link-orange:hover {
-  color: #ca4246;
+.animate-float-slow {
+  animation: float-slow 7s ease-in-out infinite;
 }
