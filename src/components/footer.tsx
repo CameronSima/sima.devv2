@@ -4,99 +4,157 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <div className="items-stretch bg-white flex w-full flex-col px-16 md:py-12 max-md:max-w-full max-md:px-5">
-      <div className="mt-8 pb-2 max-md:max-w-full">
-        <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
-          <div className="flex flex-col items-stretch w-[44%] max-md:w-full max-md:ml-0">
-            <div className="items-start flex flex-col max-md:max-w-full max-md:mt-10">
-              <Link href="/">
-                <div className="text-black font-bold text-3xl rainbow-text">
-                  Sima.dev
-                </div>
-              </Link>{" "}
-            </div>
-          </div>{" "}
-          <div className="flex flex-col items-stretch w-[56%] ml-5 max-md:w-full max-md:ml-0">
-            <div className="grow max-md:max-w-full max-md:mt-10">
-              <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
-                <div className="flex flex-col items-stretch w-[33%] ml-5 max-md:w-full max-md:ml-0">
-                  <div className="items-stretch flex flex-col pb-2 max-md:mt-10">
-                    <div className="text-black text-base font-semibold leading-6 whitespace-nowrap">
-                      Links
-                    </div>{" "}
-                    <Link href="/projects">
-                      <div className="text-black text-sm leading-5 whitespace-nowrap mt-4">
-                        Projects
-                      </div>{" "}
-                    </Link>
-                    <Link href="/skills">
-                      <div className="text-black text-sm leading-5 whitespace-nowrap mt-4">
-                        Skills
-                      </div>{" "}
-                    </Link>
-                    <Link href="/contact">
-                      <div className="text-black text-sm leading-5 whitespace-nowrap mt-4">
-                        Contact
-                      </div>{" "}
-                    </Link>
-                  </div>
-                </div>{" "}
-                <div className="flex flex-col items-stretch w-[33%] ml-5 max-md:w-full max-md:ml-0">
-                  <div className="items-stretch flex grow flex-col max-md:mt-10">
-                    <div className="text-black text-base font-semibold leading-6 whitespace-nowrap">
-                      Social
-                    </div>{" "}
-                    <div className="items-stretch flex justify-start gap-3 py-2">
-                      <img
-                        loading="lazy"
-                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/489f6383710b027a0fa9bce5d3ba6c3d2d92dbf504ccbbf107bda824799f67e6?apiKey=743de8c190c34c4cbb3bf38ac8b5b69c&"
-                        className="aspect-square object-contain object-center w-7 overflow-hidden shrink-0 max-w-full"
-                      />{" "}
-                      <Link href="https://linkedin.com/in/cameronsima">
-                        <div className="text-black text-sm leading-5">
-                          LinkedIn
-                        </div>
-                      </Link>
-                    </div>{" "}
-                    <div className="items-stretch flex justify-start gap-3 py-2">
-                      <img
-                        loading="lazy"
-                        src="/github-mark.svg"
-                        className="aspect-square ml-0.5 object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
-                      />{" "}
-                      <Link href="https://github.com/cameronsima">
-                        <div className="text-black text-sm leading-5">
-                          Github
-                        </div>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <footer className="border-t border-white/10 bg-night-raised/40">
+      <div className="mx-auto max-w-6xl px-5 py-14 md:px-8">
+        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+          <div className="max-w-sm">
+            <Link
+              href="/"
+              className="font-display text-xl font-bold tracking-tight"
+            >
+              sima<span className="text-tracer">.dev</span>
+            </Link>
+            <p className="mt-3 text-sm leading-6 text-slate-400">
+              Cam Sima — full-stack software engineer building games, real-time
+              systems, and polished web experiences.
+            </p>
+            <p className="mt-4 font-mono text-xs text-slate-500">
+              Currently flying:{" "}
+              <a
+                href="https://warbirds.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-contrail hover:underline"
+              >
+                warbirds.io
+              </a>
+            </p>
           </div>
-          <div className="flex flex-col items-stretch w-[15%] ml-5 max-md:w-full max-md:ml-0">
-            <img src="/christchurch.png" />{" "}
+
+          <div className="grid grid-cols-2 gap-10 sm:grid-cols-3">
+            <div>
+              <h3 className="font-mono text-xs uppercase tracking-widest text-slate-500">
+                Site
+              </h3>
+              <ul className="mt-4 space-y-3 text-sm">
+                <li>
+                  <Link
+                    href="/projects"
+                    className="text-slate-300 transition-colors hover:text-white"
+                  >
+                    Projects
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/skills"
+                    className="text-slate-300 transition-colors hover:text-white"
+                  >
+                    Skills
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/contact"
+                    className="text-slate-300 transition-colors hover:text-white"
+                  >
+                    Contact
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-mono text-xs uppercase tracking-widest text-slate-500">
+                Warbirds.io
+              </h3>
+              <ul className="mt-4 space-y-3 text-sm">
+                <li>
+                  <a
+                    href="https://warbirds.io"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-300 transition-colors hover:text-white"
+                  >
+                    Sky Ring
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://naval.warbirds.io"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-300 transition-colors hover:text-white"
+                  >
+                    Naval
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://ground.warbirds.io"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-300 transition-colors hover:text-white"
+                  >
+                    Ground
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://combined.warbirds.io"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-300 transition-colors hover:text-white"
+                  >
+                    Combined Arms
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://warbirds.io/battleship"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-300 transition-colors hover:text-white"
+                  >
+                    USS New Jersey
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <h3 className="font-mono text-xs uppercase tracking-widest text-slate-500">
+                Elsewhere
+              </h3>
+              <ul className="mt-4 space-y-3 text-sm">
+                <li>
+                  <a
+                    href="https://github.com/cameronsima"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-300 transition-colors hover:text-white"
+                  >
+                    GitHub
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://linkedin.com/in/cameronsima"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-slate-300 transition-colors hover:text-white"
+                  >
+                    LinkedIn
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>{" "}
-      <div className="bg-black flex shrink-0 h-px flex-col mt-20 max-md:max-w-full max-md:mt-10" />{" "}
-      <div className="justify-between items-stretch flex w-full gap-5 mt-8 mb-8 max-md:max-w-full max-md:flex-wrap">
-        <div className="text-black text-sm leading-5">
-          © {year} sima.dev. All rights reserved.
-        </div>{" "}
-        <div className="items-stretch flex justify-between gap-5 max-md:justify-center">
-          <div className="text-black text-sm leading-5 underline grow whitespace-nowrap">
-            Privacy Policy
-          </div>{" "}
-          <div className="text-black text-sm leading-5 underline">
-            Terms of Service
-          </div>{" "}
-          <div className="text-black text-sm leading-5 underline grow whitespace-nowrap">
-            Cookies Settings
-          </div>
+
+        <div className="mt-12 flex flex-col gap-2 border-t border-white/10 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
+          <p>© {year} Cam Sima. All rights reserved.</p>
+          <p className="font-mono">Crashing into the scenery is canon.</p>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }

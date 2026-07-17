@@ -2,6 +2,22 @@ import { Project } from "./models";
 
 export const projects: Project[] = [
   {
+    name: "Warbirds.io",
+    descriptionBrief:
+      "Browser-based multiplayer air combat — blocky team dogfights over the Brick Sea",
+    descriptionLong: [
+      "Warbirds.io is a real-time multiplayer air-combat game that runs entirely in the browser — no download, no install. Two squadrons battle for control of the Sky Ring above the Brick Sea: fly fighters and torpedo bombers, man anti-aircraft guns, operate battleship turrets with a ballistic computer, or ride along as a Leviathan gunner.",
+      "The game spans five theaters: the original Sky Ring dogfights (warbirds.io), fleet action at naval.warbirds.io, surface warfare at ground.warbirds.io, full combined-arms battles at combined.warbirds.io, and a walkable 1:1-scale voxel recreation of the USS New Jersey (BB-62) at warbirds.io/battleship — every deck from bridge to engine room.",
+      "Playable across desktop and mobile with mouse/keyboard, touch, gamepad, and HOTAS support, plus a solo Flight School training mode and daily missions.",
+    ],
+    slug: "warbirds",
+    link: "https://warbirds.io",
+    linkText: "Play now",
+    skills: ["WebGL", "Real-time multiplayer", "Game design", "TypeScript"],
+    role: "Creator",
+    date: "Current",
+  },
+  {
     name: "Apeta",
     descriptionBrief:
       "IOS app for learning skills and earning for sharing expertise",

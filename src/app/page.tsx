@@ -1,153 +1,202 @@
-import Footer from "@/components/footer";
-import Header from "@/components/header";
-import ProjectOverview from "@/components/ProjectOverview";
-import Testimonial, { TestimonalCarousel } from "@/components/Testimonial";
-import { projects } from "@/projects";
 import Link from "next/link";
-import * as React from "react";
+import HeroCanvas from "@/components/HeroCanvas";
+import ProjectCard from "@/components/ProjectCard";
+import Reveal from "@/components/Reveal";
+import WarbirdsShowcase from "@/components/WarbirdsShowcase";
+import { projects } from "@/projects";
+
+const clientProjects = projects.filter((p) => p.slug !== "warbirds");
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-stretch">
-      <Header />
-      <div className="items-stretch bg-white flex w-full flex-col px-16 md:py-12 max-md:max-w-full max-md:px-5">
-        <div className="mt-16 max-md:max-w-full max-md:mt-10">
-          <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
-            <div className="flex flex-col items-stretch w-6/12 max-md:w-full max-md:ml-0">
-              <div className="self-stretch text-black text-6xl font-bold leading-[67px] max-md:max-w-full max-md:text-4xl max-md:leading-[54px] max-md:mt-10">
-                Experienced Software Developer innovating Solutions
-              </div>
+    <>
+      {/* ---------------- Hero ---------------- */}
+      <section className="relative flex min-h-[92svh] flex-col justify-center overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-night via-[#081226] to-night" />
+        <div className="bg-grid absolute inset-0" />
+        <HeroCanvas />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-night to-transparent" />
+
+        <div className="relative z-10 mx-auto w-full max-w-6xl px-5 pb-24 pt-32 md:px-8">
+          <Reveal>
+            <p className="font-mono text-sm text-contrail">
+              <span className="mr-2 inline-block h-2 w-2 rounded-full bg-emerald-400 align-middle" />
+              cam sima · software engineer
+            </p>
+            <h1 className="mt-6 max-w-3xl font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
+              I build things that{" "}
+              <span className="text-gradient-sky">fly</span>,{" "}
+              <span className="text-gradient-fire">fight</span>, and ship.
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-8 text-slate-400">
+              Full-stack engineer with a thing for real-time systems, games, and
+              the kind of web experiences that make people say &ldquo;wait, this
+              runs in a browser?&rdquo; Creator of{" "}
+              <a
+                href="https://warbirds.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-tracer hover:underline"
+              >
+                Warbirds.io
+              </a>
+              .
+            </p>
+            <div className="mt-9 flex flex-wrap items-center gap-4">
+              <a
+                href="https://warbirds.io"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
+                Play Warbirds.io
+                <span aria-hidden>↗</span>
+              </a>
+              <Link href="/projects" className="btn-ghost">
+                See my work
+              </Link>
             </div>
-            <div className="flex flex-col items-stretch w-6/12 ml-5 max-md:w-full max-md:ml-0">
-              <div className="items-stretch flex grow flex-col max-md:max-w-full max-md:mt-10">
-                <div className="text-black text-lg leading-7 max-md:max-w-full">
-                  Welcome to my portfolio! I am passionate about developing
-                  cutting-edge software solutions that drive business growth and
-                  efficiency. With a strong focus on innovation and
-                  user-friendly design, I strive to create impactful and
-                  sustainable solutions for my clients. Whether it's web
-                  development, mobile applications, or custom software, I am
-                  dedicated to exceeding expectations and delivering top-notch
-                  results. Thank you for visiting, and I look forward to the
-                  opportunity to collaborate with you on your next project!
-                </div>{" "}
-                <div className="items-stretch flex gap-4 mt-6 pt-4 self-start">
-                  <Link href="/about">
-                    <div className="text-white text-base leading-6 whitespace-nowrap justify-center items-stretch border bg-black grow px-6 py-3 border-solid border-black max-md:px-5">
-                      Learn More
-                    </div>{" "}
-                  </Link>
-                  <Link href="/contact">
-                    <div className="text-black text-base leading-6 whitespace-nowrap justify-center items-stretch border grow px-6 py-3 border-solid border-black max-md:px-5">
-                      Contact
-                    </div>
-                  </Link>
-                </div>
+          </Reveal>
+        </div>
+
+        <div className="absolute bottom-6 left-1/2 z-10 -translate-x-1/2 text-slate-500">
+          <span className="block animate-bounce text-xl" aria-hidden>
+            ↓
+          </span>
+        </div>
+      </section>
+
+      {/* ---------------- Warbirds showcase ---------------- */}
+      <div className="py-24 md:py-32">
+        <WarbirdsShowcase />
+      </div>
+
+      {/* ---------------- Selected work ---------------- */}
+      <section className="border-t border-white/10 bg-night-raised/30 py-24 md:py-32">
+        <div className="mx-auto max-w-6xl px-5 md:px-8">
+          <Reveal>
+            <div className="flex flex-wrap items-end justify-between gap-6">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.3em] text-contrail">
+                  Selected work
+                </p>
+                <h2 className="mt-4 font-display text-4xl font-bold tracking-tight sm:text-5xl">
+                  Client & side projects
+                </h2>
+                <p className="mt-4 max-w-xl text-slate-400">
+                  A decade of shipping for everyone from Nike and Lockheed
+                  Martin to my own late-night ideas.
+                </p>
               </div>
+              <Link href="/projects" className="btn-ghost">
+                All projects →
+              </Link>
             </div>
+          </Reveal>
+
+          <div className="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {clientProjects.slice(0, 6).map((project, i) => (
+              <Reveal key={project.slug} delay={i * 60}>
+                <ProjectCard project={project} />
+              </Reveal>
+            ))}
           </div>
-        </div>{" "}
-        <img
-          loading="lazy"
-          srcSet="hero.png"
-          className="object-contain object-center w-full overflow-hidden mt-20 mb-10 max-md:max-w-full max-md:mt-10"
-        />
-      </div>{" "}
-      <div className="items-stretch bg-white flex w-full flex-col justify-center px-16 md:py-12 max-md:max-w-full max-md:px-5">
-        <div className="mt-16 mb-10 max-md:max-w-full max-md:mr-1 max-md:mt-10">
-          <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
-            <div className="flex flex-col items-stretch w-6/12 max-md:w-full max-md:ml-0">
-              <div className="items-start flex flex-col my-auto max-md:max-w-full max-md:mt-10">
-                <div className="self-stretch text-black text-5xl font-bold leading-[58px] max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
-                  Passionate software developer with extensive expertise
-                </div>{" "}
-                <div className="self-stretch text-black text-lg leading-7 mt-6 max-md:max-w-full">
-                  With years of experience in developing high-quality software,
-                  I have a deep understanding of various programming languages
-                  and frameworks. My professional background includes working on
-                  diverse projects and collaborating with cross-functional teams
-                  to deliver exceptional results.
-                </div>{" "}
-                <div className="items-stretch flex justify-between gap-5 mt-6 pt-4 self-start">
-                  {/* <div className="text-black text-base leading-6 whitespace-nowrap justify-center items-stretch border grow px-6 py-3 border-solid border-black max-md:px-5">
-                    Learn More
-                  </div>{" "} */}
-                  <div className="justify-center items-stretch flex gap-2 mt-3 self-start">
-                    <Link href="/contact">
-                      <div className="text-black text-base leading-6 grow whitespace-nowrap">
-                        Contact
-                      </div>{" "}
-                    </Link>
-                    <img
-                      loading="lazy"
-                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/cc370c49402d26ed794dc99d559a800013b689b8a2dc3db6de741f4bc814e22b?apiKey=743de8c190c34c4cbb3bf38ac8b5b69c&"
-                      className="aspect-square object-contain object-center w-6 overflow-hidden shrink-0 max-w-full"
-                    />
+        </div>
+      </section>
+
+      {/* ---------------- About / capabilities strip ---------------- */}
+      <section className="py-24 md:py-32">
+        <div className="mx-auto max-w-6xl px-5 md:px-8">
+          <div className="grid items-start gap-12 lg:grid-cols-2">
+            <Reveal>
+              <p className="font-mono text-xs uppercase tracking-[0.3em] text-contrail">
+                About
+              </p>
+              <h2 className="mt-4 font-display text-4xl font-bold tracking-tight sm:text-5xl">
+                From Fortune 500 to one-man flight sim
+              </h2>
+              <p className="mt-6 leading-8 text-slate-400">
+                I&apos;m a full-stack engineer and AWS Certified Solutions
+                Architect with 10+ years across startups, agencies, and
+                enterprise. I&apos;ve built AR experiences for AT&amp;T stores,
+                an interactive lunar rover for Lockheed Martin&apos;s tradeshow
+                booth, Nike&apos;s in-store campaign tech — and now I spend my
+                nights running a multiplayer air-combat game where strangers
+                dogfight over a brick-textured ocean.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link href="/skills" className="btn-ghost">
+                  Full skill set
+                </Link>
+                <Link href="/contact" className="btn-primary">
+                  Work with me
+                </Link>
+              </div>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {[
+                  {
+                    stat: "10+",
+                    label: "years shipping production software",
+                  },
+                  {
+                    stat: "5",
+                    label: "live Warbirds.io theaters of war",
+                  },
+                  {
+                    stat: "AWS",
+                    label: "Certified Solutions Architect",
+                  },
+                  {
+                    stat: "0",
+                    label: "downloads needed to play my game",
+                  },
+                ].map((item) => (
+                  <div key={item.label} className="card p-6">
+                    <p className="font-display text-4xl font-bold text-white">
+                      {item.stat}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-slate-400">
+                      {item.label}
+                    </p>
                   </div>
-                </div>
+                ))}
               </div>
-            </div>{" "}
-            <div className="flex flex-col items-stretch w-6/12 ml-5 max-md:w-full max-md:ml-0">
-              <img
-                loading="lazy"
-                src="/me.jpeg"
-                className="aspect-[0.96] object-contain object-top w-full overflow-hidden grow max-md:max-w-full max-md:mt-10"
-              />
-            </div>
+            </Reveal>
           </div>
         </div>
-      </div>{" "}
-      <div className="items-stretch bg-white flex w-full flex-col justify-center px-16 md:py-12 max-md:max-w-full max-md:px-5">
-        <div className="mt-16 mb-10 max-md:max-w-full max-md:mr-1 max-md:mt-10">
-          <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
-            <div className="flex flex-col items-stretch w-6/12 max-md:w-full max-md:ml-0">
-              <div className="flex flex-col mb-auto items-start max-md:max-w-full max-md:mt-10">
-                <div className="self-stretch text-black text-4xl font-bold leading-10 mt-6 max-md:max-w-full">
-                  Unleash the Power of Innovation with Expert Software
-                  Development Services
-                </div>{" "}
-                <div className="self-stretch text-black text-lg leading-7 mt-6 max-md:max-w-full">
-                  With a focus on cutting-edge technologies and a passion for
-                  problem-solving, my software developer portfolio showcases the
-                  skills and expertise needed to bring your ideas to life.
-                </div>
-              </div>
-            </div>{" "}
-            <div className="flex flex-col items-stretch w-6/12 ml-5 max-md:w-full max-md:ml-0">
-              <img
-                loading="lazy"
-                src="/rowhome.png"
-                className="aspect-[0.96] object-contain object-center w-full overflow-hidden grow max-md:max-w-full max-md:mt-10"
+      </section>
+
+      {/* ---------------- CTA ---------------- */}
+      <section className="pb-28">
+        <div className="mx-auto max-w-6xl px-5 md:px-8">
+          <Reveal>
+            <div className="card relative overflow-hidden p-10 text-center md:p-16">
+              <div
+                className="pointer-events-none absolute inset-0 opacity-60"
+                style={{
+                  background:
+                    "radial-gradient(600px circle at 50% -20%, rgba(56,189,248,0.15), transparent 60%)",
+                }}
               />
+              <h2 className="relative font-display text-3xl font-bold tracking-tight sm:text-4xl">
+                Have a project that needs altitude?
+              </h2>
+              <p className="relative mx-auto mt-4 max-w-lg text-slate-400">
+                I take on select freelance and contract work — especially
+                real-time, interactive, or just plain unusual builds.
+              </p>
+              <div className="relative mt-8">
+                <Link href="/contact" className="btn-primary">
+                  Get in touch
+                </Link>
+              </div>
             </div>
-          </div>
+          </Reveal>
         </div>
-      </div>{" "}
-      <div className="items-center bg-white flex w-full flex-col px-16 md:py-12 max-md:max-w-full max-md:px-5">
-        <div className="text-black text-center text-base font-semibold leading-6 self-center whitespace-nowrap mt-16 max-md:mt-10">
-          Projects
-        </div>{" "}
-        <div className="self-center text-black text-center text-5xl font-bold leading-[58px] max-w-screen-md mt-4 max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
-          Software Project Showcase
-        </div>{" "}
-        <div className="self-center text-black text-center text-lg leading-7 whitespace-nowrap mt-6 max-md:max-w-full">
-          Explore a selection of software projects.
-        </div>{" "}
-        <div className="self-stretch mt-20 max-md:max-w-full max-md:mt-10">
-          <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
-            <ProjectOverview project={projects[0]} />
-            <ProjectOverview project={projects[1]} />
-            <ProjectOverview project={projects[2]} />
-          </div>
-        </div>{" "}
-        <Link href="/projects">
-          <div className="text-black text-base leading-6 whitespace-nowrap justify-center items-stretch border self-center mt-16 mb-10 px-7 py-3 border-solid border-black max-md:mt-10 max-md:px-5">
-            See more
-          </div>
-        </Link>
-      </div>{" "}
-      <TestimonalCarousel />
-      <Footer />
-    </div>
+      </section>
+    </>
   );
 }

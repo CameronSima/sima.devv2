@@ -2,88 +2,109 @@
 
 import { useState } from "react";
 
+const inputClass =
+  "w-full rounded-xl border border-white/15 bg-white/5 px-4 py-3 text-slate-100 placeholder:text-slate-500 outline-none transition-colors focus:border-sky-400/70 focus:bg-white/[0.07]";
+
 export default function ContactForm() {
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [formState, setFormState] = useState({
-    loading: false,
-    error: null,
-    success: false,
-  });
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
 
-  const isValid = form.name && form.email && form.message;
+  const isValid =
+    form.name.trim() && form.email.trim().includes("@") && form.message.trim();
 
-  const submit = () => {
-    if (!isValid) return;
-    setFormState({ ...formState, loading: true });
-    fetch("/api/contact", {
-      method: "POST",
-      body: JSON.stringify(form),
-    })
-      .then((res) => {
-        if (res.status === 200) {
-          setFormState({ ...formState, success: true });
-          setForm({ name: "", email: "", message: "" });
-        } else {
-          setFormState({ ...formState, error: res.statusText as any });
-        }
-      })
-      .finally(() => setFormState({ ...formState, loading: false }));
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!isValid || status === "loading") return;
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setStatus("success");
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
-    <div className="gap-5 flex max-md:flex-col max-md:items-stretch max-md:gap-0">
-      <div className="flex flex-col items-stretch w-6/12 max-md:w-full max-md:ml-0">
-        <div className="items-stretch flex flex-col pb-2 max-md:max-w-full max-md:mt-10">
-          <div className="text-black text-5xl font-bold leading-[58px] whitespace-nowrap mt-4 max-md:max-w-full max-md:text-4xl max-md:leading-[54px]">
-            Contact
-          </div>
-          <div className="text-black text-lg leading-7 mt-6 max-md:max-w-full">
-            {formState.success
-              ? "Message sent!"
-              : "Have a question or want to work together? Send me a message!"}
-          </div>{" "}
-        </div>
-      </div>{" "}
-      <div className="flex flex-col items-stretch w-6/12 ml-5 max-md:w-full max-md:ml-0">
-        <div className="items-start flex grow flex-col max-md:max-w-full max-md:mt-10">
-          <div className="self-stretch text-black text-base leading-6 whitespace-nowrap max-md:max-w-full">
-            Name
-          </div>{" "}
-          <input
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="text-neutral-600 text-base leading-6 whitespace-nowrap items-stretch self-stretch border bg-white justify-center mt-2 p-3 border-solid border-black max-md:max-w-full"
-          />
-          <div className="self-stretch text-black text-base leading-6 whitespace-nowrap mt-6 max-md:max-w-full">
-            Email
-          </div>{" "}
-          <input
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className="text-neutral-600 text-base leading-6 whitespace-nowrap items-stretch self-stretch border bg-white justify-center mt-2 p-3 border-solid border-black max-md:max-w-full"
-          />
-          <div className="self-stretch text-black text-base leading-6 whitespace-nowrap mt-6 max-md:max-w-full">
-            Message
-          </div>{" "}
-          <input
-            value={form.message}
-            onChange={(e) => setForm({ ...form, message: e.target.value })}
-            className="text-neutral-600 text-base leading-6 whitespace-nowrap items-stretch self-stretch border bg-white mt-2 pt-3 pb-28 px-3 border-solid border-black max-md:max-w-full max-md:pb-10"
-          />
-          <button
-            onClick={submit}
-            disabled={!isValid}
-            className={`text-white text-base leading-6 whitespace-nowrap justify-center items-stretch border ${
-              isValid ? "bg-black" : "bg-gray-600"
-            } mt-6 px-7 py-3 border-solid border-black self-start max-md:px-5`}>
-            Send
-          </button>
-        </div>
+    <form onSubmit={submit} className="card space-y-5 p-7 md:p-8">
+      <div>
+        <label
+          htmlFor="name"
+          className="mb-2 block font-mono text-xs uppercase tracking-widest text-slate-500"
+        >
+          Callsign / Name
+        </label>
+        <input
+          id="name"
+          value={form.name}
+          onChange={(e) => setForm({ ...form, name: e.target.value })}
+          placeholder="Maverick"
+          className={inputClass}
+          autoComplete="name"
+        />
       </div>
-    </div>
+      <div>
+        <label
+          htmlFor="email"
+          className="mb-2 block font-mono text-xs uppercase tracking-widest text-slate-500"
+        >
+          Email
+        </label>
+        <input
+          id="email"
+          type="email"
+          value={form.email}
+          onChange={(e) => setForm({ ...form, email: e.target.value })}
+          placeholder="you@example.com"
+          className={inputClass}
+          autoComplete="email"
+        />
+      </div>
+      <div>
+        <label
+          htmlFor="message"
+          className="mb-2 block font-mono text-xs uppercase tracking-widest text-slate-500"
+        >
+          Message
+        </label>
+        <textarea
+          id="message"
+          rows={6}
+          value={form.message}
+          onChange={(e) => setForm({ ...form, message: e.target.value })}
+          placeholder="What are we building?"
+          className={`${inputClass} resize-y`}
+        />
+      </div>
+
+      <div className="flex items-center gap-4 pt-1">
+        <button
+          type="submit"
+          disabled={!isValid || status === "loading"}
+          className="btn-primary disabled:cursor-not-allowed disabled:opacity-40"
+        >
+          {status === "loading" ? "Transmitting…" : "Send transmission"}
+        </button>
+        {status === "success" && (
+          <p className="text-sm font-medium text-emerald-400" role="status">
+            Message received — I&apos;ll get back to you soon.
+          </p>
+        )}
+        {status === "error" && (
+          <p className="text-sm font-medium text-rose-400" role="status">
+            Transmission failed. Try again or ping me on LinkedIn.
+          </p>
+        )}
+      </div>
+    </form>
   );
 }
